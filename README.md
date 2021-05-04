@@ -5,7 +5,5 @@
 * Dichill - Backend Developer
 * Shem - Marketing Manager and Designer
 
-<hr>
-
 ### Directory
 * Templates can be found in **core/templates/**
