@@ -1,0 +1,185 @@
+<html>
+    <head>
+        <style>
+            /*BACKGROUND COLOR*/
+            body {
+                background-color: aquamarine;
+            }
+
+            .maindiv {
+                border-radius: 10%;
+                width: 600px;
+                height: 750px;
+                background-color: #f8ffff;
+                color: #11dada; 
+                position: absolute;
+                top: 3%;
+                left: 10%;
+                animation: mainDivAnim 3s;
+            }
+            
+            @keyframes mainDivAnimMobile {
+                from{opacity: 0;top: 23%;}
+                to{opacity: 1;top: 33%;}
+            }
+            
+            @keyframes mainDivAnim {
+                from{opacity: 0;left: 20%;}
+                to{opacity: 1;left: 10%;}
+            }
+
+            .logindiv {
+                position: relative;
+                left: 30px;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .namediv {
+                position: relative;
+                left: 30px;
+                top: -20px;
+                font-family: 'Noto Sans JP', sans-serif;
+            }
+
+            input[name=uname], input[name=pname] {
+                border: none;
+                background-color: #dcdcdc;
+                border-radius: 1%;
+                height: 50px;
+                font-size: medium;
+                position: relative;
+                top: -30px;
+                left: 30px;
+                width: 475px; 
+            }
+
+            input[name=remember] {
+                font-family: 'Noto Sans JP', sans-serif;
+            }
+
+            button[type=submit] {
+                background-color: lightgreen;
+                border: none;
+                position: relative;
+                left: 30px;
+                height: 50px;
+                width: 250px;
+                color: white;
+            }
+
+            .pwelcome {
+                font-size: 75px;
+                font-family: 'Ubuntu', sans-serif;
+                position: absolute;
+                cursor: pointer;
+                user-select: none;
+            }
+
+            @keyframes welcomeFloatIn {
+                from{opacity: 0;right: 150px;}
+                to{opacity: 1;right: 50px;}
+            }
+
+            @keyframes welcomeFloatInMob {
+                from{opacity: 0;top: 250px;}
+                to{opacity: 1;top: 100px;}
+            }
+
+            .pfillin {
+                font-size: 30px;
+                font-family: 'Ubuntu', sans-serif;
+                position: relative;
+                top: 125px;
+                left: 50px;
+                text-align: center;
+                user-select: none;
+            }
+
+            .welcomDiv {
+                animation: welcomeFloatIn 3s;
+                position: absolute;
+                right: 50px;
+                width: 600px;
+                height: 250px;
+            }
+
+        </style>
+    </head>
+    <body onload="mainDivMobile()">
+
+            <!--PLACE SERVER LOCATION IN ACTION-->
+        <form action="" method="post">
+        <div class="maindiv" id="main">
+            
+            <div class="logindiv">
+            <b><p style="font-size: 50px;">Login</p></b>
+            </div>    
+
+            <div class="namediv">
+            <p style="font-size: 25px;">Email/Username</p>
+            </div>
+
+            <input type="text" placeholder="Email/Username" name="uname" required>
+        
+            <div class="namediv">
+                <p style="font-size: 25px;">Password</p>
+            </div>
+
+            <input type="password" placeholder="Password" name="pname" required>
+
+            <button type="submit">Submit</button>
+
+            <div class="logindiv">
+                <b><p style="font-size: 50px;">No Account?</p></b>
+            </div>   
+
+            <div class="namediv">
+                <a href="#" style="font-size: 25px;">Register Here</a>
+                </div>
+        </div>
+        </form>
+
+        <div class="welcomDiv" id="welcDiv">
+        <p class="pwelcome" id="welcome" onclick="howAreYou()">Welcome Back!</p>
+        <p class="pfillin" id="pfill">Please login to continue.</p>
+        </div>
+
+        <script>
+            
+            function mainDivMobile() {
+                if (/Mobi|Android/i.test(navigator.userAgent)) {
+                console.log('true');
+                var mainDiv = document.getElementById('main');
+                var welcDiv = document.getElementById('welcDiv');
+                
+                //MAINDIV
+                mainDiv.style.animation='mainDivAnimMobile 3s';
+                mainDiv.style.zoom='1.5';
+                mainDiv.style.left='5%';
+                mainDiv.style.top='33%'
+                
+                //WELCOME DIV
+                welcDiv.style.zoom='1.3'
+                welcDiv.style.top='100px'
+                welcDiv.style.animation='welcomeFloatInMob 3s'
+                document.getElementById('pfill').style.left='-25px'
+                }
+            } 
+
+            function howAreYou() {
+                var x = document.getElementById('welcome').textContent;
+                switch (x){
+                    case 'Welcome Back!':
+                    document.getElementById('welcome').innerHTML = 'How Are You?';
+                    document.getElementById('welcome').style.left='50px';
+                    break;
+
+                    case 'How Are You?':
+                    document.getElementById('welcome').innerHTML = 'Welcome Back!';
+                    document.getElementById('welcome').style.left='0px';
+                    break;
+                }
+        }
+        </script>
+    </body>
+</html>
